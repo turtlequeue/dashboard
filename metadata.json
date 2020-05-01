@@ -1,0 +1,538 @@
+{
+  "version": 2,
+  "tables": [
+    {
+      "table": {
+        "schema": "public",
+        "name": "auth"
+      },
+      "object_relationships": [
+        {
+          "name": "workspace",
+          "using": {
+            "foreign_key_constraint_on": "workspace_id"
+          }
+        }
+      ],
+      "array_relationships": [
+        {
+          "name": "subs",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "auth_id",
+              "table": {
+                "schema": "public",
+                "name": "sub"
+              }
+            }
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [
+              "id",
+              "name",
+              "type",
+              "workspace_id",
+              "value",
+              "roles",
+              "created_at",
+              "status"
+            ],
+            "filter": {
+              "workspace": {
+                "usr": {
+                  "id": {
+                    "_eq": "x-hasura-user-id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "backlog"
+      },
+      "object_relationships": [
+        {
+          "name": "sub",
+          "using": {
+            "foreign_key_constraint_on": "subscription_id"
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [
+              "id",
+              "subscription_id",
+              "storage_size",
+              "total_messages",
+              "message_backlog",
+              "broker_name",
+              "topic_name",
+              "data_ledger_details",
+              "cursor_details",
+              "stat_generated_at",
+              "created_at"
+            ],
+            "filter": {
+              "sub": {
+                "workspace": {
+                  "user_id": {
+                    "_eq": "x-hasura-user-id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "conn"
+      },
+      "object_relationships": [
+        {
+          "name": "workspace",
+          "using": {
+            "foreign_key_constraint_on": "workspace_id"
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [
+              "id",
+              "uid",
+              "client_id",
+              "workspace_id",
+              "status",
+              "connected_on",
+              "updated_at",
+              "last_ping",
+              "sdk_version"
+            ],
+            "filter": {
+              "workspace": {
+                "usr": {
+                  "id": {
+                    "_eq": "x-hasura-user-id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "qstat"
+      },
+      "object_relationships": [
+        {
+          "name": "sub",
+          "using": {
+            "foreign_key_constraint_on": "subscription_id"
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [
+              "id",
+              "subscription_id",
+              "msg_throughput_in",
+              "msg_throughput_out",
+              "backlog_size",
+              "bytes_in_counter",
+              "publishers",
+              "msg_rate_out",
+              "msg_rate_in",
+              "deduplication_status",
+              "subscriptions",
+              "storage_size",
+              "replication",
+              "msg_in_counter",
+              "average_msg_size",
+              "created_at"
+            ],
+            "filter": {
+              "sub": {
+                "workspace": {
+                  "usr": {
+                    "id": {
+                      "_eq": "x-hasura-user-id"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "sub"
+      },
+      "object_relationships": [
+        {
+          "name": "auth",
+          "using": {
+            "foreign_key_constraint_on": "auth_id"
+          }
+        },
+        {
+          "name": "workspace",
+          "using": {
+            "foreign_key_constraint_on": "workspace_id"
+          }
+        }
+      ],
+      "array_relationships": [
+        {
+          "name": "backlogs",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "subscription_id",
+              "table": {
+                "schema": "public",
+                "name": "backlog"
+              }
+            }
+          }
+        },
+        {
+          "name": "qstats",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "subscription_id",
+              "table": {
+                "schema": "public",
+                "name": "qstat"
+              }
+            }
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [
+              "id",
+              "type",
+              "status",
+              "geo",
+              "geo_radius",
+              "channel",
+              "channel_type",
+              "original_parameters",
+              "workspace_id",
+              "auth_id",
+              "annotation",
+              "created_at",
+              "updated_at",
+              "valid_until",
+              "json_path",
+              "persistent"
+            ],
+            "filter": {
+              "workspace": {
+                "usr": {
+                  "id": {
+                    "_eq": "x-hasura-user-id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "usr"
+      },
+      "object_relationships": [
+        {
+          "name": "usr",
+          "using": {
+            "foreign_key_constraint_on": "invited_by"
+          }
+        }
+      ],
+      "array_relationships": [
+        {
+          "name": "usrs",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "invited_by",
+              "table": {
+                "schema": "public",
+                "name": "usr"
+              }
+            }
+          }
+        },
+        {
+          "name": "ustats",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "user_id",
+              "table": {
+                "schema": "public",
+                "name": "ustat"
+              }
+            }
+          }
+        },
+        {
+          "name": "workspaces",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "user_id",
+              "table": {
+                "schema": "public",
+                "name": "workspace"
+              }
+            }
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [
+              "admin",
+              "enabled",
+              "id",
+              "invited_by",
+              "priority",
+              "provider_data",
+              "user_login_history",
+              "authentication_provider",
+              "email",
+              "name",
+              "password",
+              "profile_picture",
+              "provider_id",
+              "username",
+              "user_timezone",
+              "created_at",
+              "login_at",
+              "updated_at"
+            ],
+            "filter": {
+              "id": {
+                "_eq": "x-hasura-user-id"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "ustat"
+      },
+      "object_relationships": [
+        {
+          "name": "usr",
+          "using": {
+            "foreign_key_constraint_on": "user_id"
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [
+              "id",
+              "user_id",
+              "total_messages",
+              "message_backlog",
+              "msg_throughput_in",
+              "msg_throughput_out",
+              "backlog_size",
+              "bytes_in_counter",
+              "msg_rate_out",
+              "msg_rate_in",
+              "storage_size",
+              "msg_in_counter",
+              "average_msg_size",
+              "wcount",
+              "scount",
+              "created_at"
+            ],
+            "filter": {
+              "usr": {
+                "id": {
+                  "_eq": "x-hasura-user-id"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "workspace"
+      },
+      "object_relationships": [
+        {
+          "name": "usr",
+          "using": {
+            "foreign_key_constraint_on": "user_id"
+          }
+        }
+      ],
+      "array_relationships": [
+        {
+          "name": "auths",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "workspace_id",
+              "table": {
+                "schema": "public",
+                "name": "auth"
+              }
+            }
+          }
+        },
+        {
+          "name": "conns",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "workspace_id",
+              "table": {
+                "schema": "public",
+                "name": "conn"
+              }
+            }
+          }
+        },
+        {
+          "name": "subs",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "workspace_id",
+              "table": {
+                "schema": "public",
+                "name": "sub"
+              }
+            }
+          }
+        },
+        {
+          "name": "wstats",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "workspace_id",
+              "table": {
+                "schema": "public",
+                "name": "wstat"
+              }
+            }
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [
+              "id",
+              "name",
+              "user_id",
+              "description",
+              "color",
+              "status",
+              "created_at",
+              "updated_at"
+            ],
+            "filter": {
+              "usr": {
+                "id": {
+                  "_eq": "x-hasura-user-id"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "wstat"
+      },
+      "object_relationships": [
+        {
+          "name": "workspace",
+          "using": {
+            "foreign_key_constraint_on": "workspace_id"
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [
+              "id",
+              "workspace_id",
+              "total_messages",
+              "message_backlog",
+              "msg_throughput_in",
+              "msg_throughput_out",
+              "backlog_size",
+              "bytes_in_counter",
+              "msg_rate_out",
+              "msg_rate_in",
+              "storage_size",
+              "msg_in_counter",
+              "average_msg_size",
+              "count",
+              "created_at"
+            ],
+            "filter": {
+              "workspace": {
+                "usr": {
+                  "id": {
+                    "_eq": "x-hasura-user-id"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

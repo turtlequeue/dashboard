@@ -1,0 +1,12 @@
+query PlaygroundCreds {
+  auth(distinct_on: type, where: {roles: {_contains: "api"}, type: {}, workspace_id: {}, workspace: {_and: {}}}) {
+    created_at
+    id
+    name
+    roles
+    status
+    type
+    value
+    workspace_id
+  }
+}

@@ -1,0 +1,21 @@
+query UserAuths {
+  auth {
+    created_at
+    id
+    name
+    roles
+    status
+    type
+    value
+    workspace_id
+    workspace {
+      color
+      description
+      id
+      name
+      status
+      updated_at
+      created_at
+    }
+  }
+}

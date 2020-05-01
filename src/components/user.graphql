@@ -1,0 +1,20 @@
+subscription UserStats {
+  ustat(limit: 1, order_by: {created_at: desc}) {
+    average_msg_size
+    backlog_size
+    wcount
+    scount
+    bytes_in_counter
+    created_at
+    id
+    message_backlog
+    msg_in_counter
+    msg_rate_in
+    msg_rate_out
+    msg_throughput_in
+    msg_throughput_out
+    storage_size
+    total_messages
+    user_id
+  }
+}

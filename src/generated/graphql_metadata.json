@@ -1,0 +1,190 @@
+{
+  "version": 2,
+  "tables": [
+    {
+      "table": {
+        "schema": "public",
+        "name": "auth"
+      },
+      "object_relationships": [
+        {
+          "name": "workspace",
+          "using": {
+            "foreign_key_constraint_on": "workspace_id"
+          }
+        }
+      ],
+      "array_relationships": [
+        {
+          "name": "subs",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "auth_id",
+              "table": {
+                "schema": "public",
+                "name": "sub"
+              }
+            }
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [],
+            "filter": {
+              "workspace_id": {
+                "_in": [
+                  "X-Hasura-Allowed-Workspace-Ids"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "sub"
+      },
+      "object_relationships": [
+        {
+          "name": "auth",
+          "using": {
+            "foreign_key_constraint_on": "auth_id"
+          }
+        },
+        {
+          "name": "workspace",
+          "using": {
+            "foreign_key_constraint_on": "workspace_id"
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [],
+            "filter": {
+              "workspace_id": {
+                "_in": [
+                  "X-Hasura-Allowed-Workspace-Ids"
+                ]
+              }
+            },
+            "allow_aggregations": true
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "usr"
+      },
+      "object_relationships": [
+        {
+          "name": "usr",
+          "using": {
+            "foreign_key_constraint_on": "invited_by"
+          }
+        }
+      ],
+      "array_relationships": [
+        {
+          "name": "usrs",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "invited_by",
+              "table": {
+                "schema": "public",
+                "name": "usr"
+              }
+            }
+          }
+        },
+        {
+          "name": "workspaces",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "user_id",
+              "table": {
+                "schema": "public",
+                "name": "workspace"
+              }
+            }
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [],
+            "filter": {
+              "id": {
+                "_eq": "X-Hasura-User-Id"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "workspace"
+      },
+      "object_relationships": [
+        {
+          "name": "usr",
+          "using": {
+            "foreign_key_constraint_on": "user_id"
+          }
+        }
+      ],
+      "array_relationships": [
+        {
+          "name": "auths",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "workspace_id",
+              "table": {
+                "schema": "public",
+                "name": "auth"
+              }
+            }
+          }
+        },
+        {
+          "name": "subs",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "workspace_id",
+              "table": {
+                "schema": "public",
+                "name": "sub"
+              }
+            }
+          }
+        }
+      ],
+      "select_permissions": [
+        {
+          "role": "user",
+          "permission": {
+            "columns": [],
+            "filter": {
+              "user_id": {
+                "_eq": "X-Hasura-Id"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+subscription UserConn {
+  conn(limit: 100, order_by: {last_ping: desc}) {
+    client_id
+    connected_on
+    id
+    last_ping
+    sdk_version
+    status
+    uid
+    updated_at
+  }
+}

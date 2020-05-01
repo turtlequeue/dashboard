@@ -1,0 +1,84 @@
+{
+  "name": "dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "/dashboard",
+  "dependencies": {
+    "@apollo/react-components": "^3.1.4",
+    "@apollo/react-hoc": "^3.1.4",
+    "@apollo/react-hooks": "^3.1.4",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/lodash": "^4.14.149",
+    "@types/node": "^12.0.0",
+    "@types/prismjs": "^1.16.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.4",
+    "@types/react-table": "^7.0.16",
+    "@types/recharts": "^1.8.9",
+    "@types/styled-components": "^5.0.1",
+    "apollo-boost": "^0.4.7",
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link": "^1.2.14",
+    "apollo-link-error": "^1.1.13",
+    "apollo-link-http": "^1.5.17",
+    "apollo-link-ws": "^1.0.20",
+    "bulma": "^0.8.2",
+    "console-feed": "^3.0.0",
+    "env-cmd": "^10.1.0",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
+    "lodash": "^4.17.15",
+    "node-sass": "^4.13.1",
+    "prismjs": "^1.20.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1",
+    "react-table": "^7.0.4",
+    "recharts": "^1.8.5",
+    "styled-components": "^5.1.0",
+    "subscriptions-transport-ws": "^0.9.16",
+    "turtlequeue": "^0.0.18",
+    "typed-rest-client": "^1.7.3",
+    "typescript": "~3.7.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build:staging": "env-cmd -f .env.staging react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "codegen": "graphql-codegen --config codegen.yml"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.13.2",
+    "@graphql-codegen/introspection": "1.13.2",
+    "@graphql-codegen/typescript": "1.13.2",
+    "@graphql-codegen/typescript-operations": "1.13.2",
+    "@graphql-codegen/typescript-react-apollo": "1.13.2",
+    "apollo": "^2.27.0"
+  },
+  "scarfSettings": {
+    "enabled": false
+  }
+}

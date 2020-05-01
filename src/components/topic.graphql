@@ -1,0 +1,71 @@
+query UserSubs {
+  sub {
+    channel
+    channel_type
+    created_at
+    geo
+    geo_radius
+    id
+    json_path
+    status
+    type
+    updated_at
+    valid_until
+    workspace_id
+    workspace {
+      color
+      description
+      id
+      name
+      status
+    }
+  }
+}
+
+subscription SubBacklog ($subId: bigint, $limit: Int){
+  backlog(where: {sub: {id: {_eq: $subId}}}, limit: $limit) {
+    id
+    created_at
+    cursor_details
+    message_backlog
+    stat_generated_at
+    storage_size
+    subscription_id
+    topic_name
+    total_messages
+    sub {
+      id
+      original_parameters
+      channel
+      created_at
+      geo
+      json_path
+      geo_radius
+      channel_type
+      persistent
+      status
+      type
+      updated_at
+    }
+  }
+}
+
+subscription SubQstat ($subId: bigint, $limit: Int) {
+qstat(where: {sub: {id: {_eq: $subId}}}, limit: $limit) {
+    average_msg_size
+    backlog_size
+    bytes_in_counter
+    created_at
+    deduplication_status
+    id
+    msg_in_counter
+    msg_rate_in
+    msg_rate_out
+    msg_throughput_in
+    msg_throughput_out
+    storage_size
+    sub {
+      id
+    }
+  }
+ }
