@@ -43,7 +43,7 @@
     "recharts": "^1.8.5",
     "styled-components": "^5.1.0",
     "subscriptions-transport-ws": "^0.9.16",
-    "turtlequeue": "^0.0.18",
+    "turtlequeue": "^0.0.20",
     "typed-rest-client": "^1.7.3",
     "typescript": "~3.7.2"
   },
