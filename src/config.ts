@@ -5,6 +5,7 @@ if (process.env.NODE_ENV === 'development' && apolloDevToken === '<SEE_README>')
 }
 
 const config = {
+  version: "0.0.1",
   turtle: {
     host: process.env.REACT_APP_TURTLEQUEUE_HOST,
     type: process.env.REACT_APP_TURTLEQUEUE_TYPE,
@@ -13,12 +14,13 @@ const config = {
   apollo: {
     uri: process.env.REACT_APP_APOLLO_URI,
     options: {
-      lazy: true,
       reconnect: true,
       connectionParams: async () => {
-        return {
-          headers: {
-            Authorization: apolloDevToken ? `Bearer ${apolloDevToken}` : "",
+        if (apolloDevToken) {
+          return {
+            headers: {
+              Authorization: `Bearer ${apolloDevToken}`;
+            }
           }
         }
       }
@@ -26,5 +28,5 @@ const config = {
   }
 }
 
-console.log('CONFIG IS', JSON.stringify(config, null, 2))
+console.log('CONFIG: ', JSON.stringify(config, null, 2))
 export default config;
