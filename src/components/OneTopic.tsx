@@ -38,7 +38,7 @@ function OneTopic() {
     return <h1>Unknown subscription</h1>
   } else {
     // TODO total messages over messages in backlog. Like this? https://www.highcharts.com/demo/combo-dual-axes
-    https://github.com/dotansimha/graphql-code-generator/issues/1922
+    // https://github.com/dotansimha/graphql-code-generator/issues/1922
     /* const RenderCompcompose: any = (
      *   withSubBacklog({ name: "withSubBacklog" }),
      *   withSubQstat({ name: "withSubQstat" }),
