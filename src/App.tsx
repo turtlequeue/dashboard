@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
+  Redirect,
   Switch,
   Route,
   Link
@@ -91,6 +92,7 @@ function App() {
                 <Route exact path="/">
                   <Home />
                 </Route>
+                <Redirect exact from="/index.html" to="/" />
                 <Route path="/security">
                   <Auth />
                 </Route>
