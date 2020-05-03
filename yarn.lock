@@ -13358,10 +13358,10 @@ tunnel@0.0.6:
   resolved "https://registry.yarnpkg.com/tunnel/-/tunnel-0.0.6.tgz#72f1314b34a5b192db012324df2cc587ca47f92c"
   integrity sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==
 
-turtlequeue@^0.0.18:
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/turtlequeue/-/turtlequeue-0.0.18.tgz#ebe540655dce1c263bb2bff38b66551df12f7b84"
-  integrity sha512-ADE1hlgLewKBbb87UrVs+4ny+yAH9VGJJK8pSKmmo8MZ7pyeSiiyoFf3lU6RaT7eDyd5D5LDibMagwfwwkcb1w==
+turtlequeue@^0.0.20:
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/turtlequeue/-/turtlequeue-0.0.20.tgz#384576d96ab9188d1b4b1e6eebd68ecdc3a7a42f"
+  integrity sha512-HCtlcBiepMO+7ihffTCOKsY8iWwgO0xlr9ZwUOWRtrKo4H0mOzmpL3xqanqfiP9awcTyMZ/9Mrp/6f/tmxuNZw==
   dependencies:
     websocket "^1.0.26"
 
