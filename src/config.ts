@@ -19,7 +19,7 @@ const config = {
         if (apolloDevToken) {
           return {
             headers: {
-              Authorization: `Bearer ${apolloDevToken}`;
+              Authorization: `Bearer ${apolloDevToken}`
             }
           }
         }
@@ -28,5 +28,5 @@ const config = {
   }
 }
 
-console.log('CONFIG: ', JSON.stringify(config, null, 2))
+console.log('CONFIG: ', JSON.stringify(config, null, 2));
 export default config;
